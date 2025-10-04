@@ -1,0 +1,64 @@
+### OpenAQ API Testing
+### Asegúrate de que el servidor esté corriendo: npm run start:dev
+
+@baseUrl = http://localhost:4000
+@latitude = 19.4326
+@longitude = -99.1332
+
+### ⭐ NUEVA FUNCIÓN: Fetch Locations (Radio 25km fijo)
+### Esta es la función principal que consulta OpenAQ y procesa los datos
+GET {{baseUrl}}/open-aq/fetch-locations?latitude=44.90588053635772&longitude=-98.8344817893032
+
+###
+
+### Fetch Locations - Ciudad de México
+GET {{baseUrl}}/open-aq/fetch-locations?latitude=19.4326&longitude=-99.1332
+
+###
+
+### Fetch Locations - Nueva York
+GET {{baseUrl}}/open-aq/fetch-locations?latitude=40.7128&longitude=-74.0060
+
+###
+
+### 1. Obtener ubicaciones cercanas (Ciudad de México)
+GET {{baseUrl}}/open-aq/locations?latitude={{latitude}}&longitude={{longitude}}&radius=10000&limit=10
+
+###
+
+### 2. Obtener mediciones recientes cerca de coordenadas
+GET {{baseUrl}}/open-aq/measurements?latitude={{latitude}}&longitude={{longitude}}&radius=5000&limit=50
+
+###
+
+### 3. Obtener datos completos de calidad del aire
+GET {{baseUrl}}/open-aq/air-quality?latitude={{latitude}}&longitude={{longitude}}&radius=5000
+
+###
+
+### 4. Obtener ubicaciones en México
+GET {{baseUrl}}/open-aq/country/MX?limit=20
+
+###
+
+### 5. Obtener últimos datos de una ubicación específica (reemplaza {locationId} con un ID real)
+GET {{baseUrl}}/open-aq/location/12345/latest
+
+###
+
+### Ejemplos con otras ciudades:
+
+### Nueva York
+GET {{baseUrl}}/open-aq/locations?latitude=40.7128&longitude=-74.0060&radius=10000
+
+###
+
+### Madrid
+GET {{baseUrl}}/open-aq/locations?latitude=40.4168&longitude=-3.7038&radius=10000
+
+###
+
+### Buenos Aires
+GET {{baseUrl}}/open-aq/locations?latitude=-34.6037&longitude=-58.3816&radius=10000
+
+###
