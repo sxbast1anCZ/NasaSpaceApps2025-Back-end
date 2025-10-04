@@ -13,3 +13,36 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+// Modelo para datos de PM (Particulate Matter)
+model PM_Data {
+  id        Int      @id @default(autoincrement())
+  latitude  Float
+  longitude Float
+  value     Float    // Valor de PM2.5 o PM10
+  createdAt DateTime @default(now())
+
+  @@map("pm_data")
+}
+
+// Modelo para datos de O3 (Ozono)
+model O3_Data {
+  id        Int      @id @default(autoincrement())
+  latitude  Float
+  longitude Float
+  value     Float    // Valor de O3
+  createdAt DateTime @default(now())
+
+  @@map("o3_data")
+}
+
+// Modelo para datos de NO2 (Dióxido de Nitrógeno)
+model NO2_Data {
+  id        Int      @id @default(autoincrement())
+  latitude  Float
+  longitude Float
+  value     Float    // Valor de NO2
+  createdAt DateTime @default(now())
+
+  @@map("no2_data")
+}
