@@ -6,7 +6,6 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   
-  // Habilitar validación global
   // Habilitar validaciones globales
   app.useGlobalPipes(
     new ValidationPipe({
@@ -25,16 +24,22 @@ async function bootstrap() {
     .setDescription(
       'API para consultar datos meteorológicos y de calidad del aire.\n\n' +
       '## APIs Integradas:\n' +
+      '- **OpenAQ**: Red global de sensores de calidad del aire en tiempo real\n' +
       '- **OpenWeatherMap**: Clima actual, pronóstico y contaminación del aire\n' +
       '- **WeatherAPI.com**: Clima completo, historial, astronomía y más\n\n' +
+      '## Cobertura TEMPO:\n' +
+      'El satélite TEMPO cubre América del Norte y del Sur:\n' +
+      '- **Latitud**: -55° a 60° (Sur de Argentina hasta Norte de Canadá)\n' +
+      '- **Longitud**: -140° a -30° (Océano Pacífico hasta Océano Atlántico)\n\n' +
       '## Contaminantes Monitoreados:\n' +
-      '- PM2.5, PM10 (Material Particulado)\n' +
-      '- O3 (Ozono)\n' +
-      '- NO2 (Dióxido de Nitrógeno)\n' +
-      '- SO2 (Dióxido de Azufre)\n' +
-      '- CO (Monóxido de Carbono)'
+      '- **PM2.5, PM10**: Material Particulado\n' +
+      '- **O3**: Ozono troposférico\n' +
+      '- **NO2**: Dióxido de Nitrógeno\n' +
+      '- **SO2**: Dióxido de Azufre\n' +
+      '- **CO**: Monóxido de Carbono'
     )
-    .setVersion('1.0')
+    .setVersion('2.0.0')
+    .addTag('OpenAQ', 'Endpoints de OpenAQ - Sensores de calidad del aire en área TEMPO')
     .addTag('OpenWeather', 'Endpoints de OpenWeatherMap API')
     .addTag('WeatherAPI', 'Endpoints de WeatherAPI.com')
     .addTag('Health', 'Health checks y utilidades')
@@ -58,6 +63,5 @@ async function bootstrap() {
   
   console.log(`\n🚀 Servidor iniciado en: http://localhost:${port}`);
   console.log(`📚 Documentación Swagger: http://localhost:${port}/api\n`);
-  await app.listen(process.env.PORT ?? 4000);
 }
 bootstrap();
