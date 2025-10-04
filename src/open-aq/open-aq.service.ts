@@ -29,8 +29,8 @@ export class OpenAqService {
   private getParameterDisplayName(parameter: string): string {
     const displayNames = {
       pm: 'PM (Particulate Matter)',
-      no2: 'NO (Nitrogen Dioxide)',
-      o3: 'O (Ozone)',
+      no2: 'NO₂ (Nitrogen Dioxide)',
+      o3: 'O₃ (Ozone)',
     };
     return displayNames[parameter.toLowerCase()] || parameter.toUpperCase();
   }
@@ -83,9 +83,14 @@ export class OpenAqService {
           let matches = false;
           
           if (paramLower === 'pm') {
+            // Para PM, buscar todos los que empiecen con "pm" (PM2.5, PM10, etc.)
             matches = sensorParamName?.startsWith('pm');
-          } else {
-            matches = sensorParamName === paramLower;
+          } else if (paramLower === 'no2') {
+            // NO2 puede venir como "no2" o "nitrogen dioxide"
+            matches = sensorParamName === 'no2' || sensorParamName === 'nitrogen dioxide';
+          } else if (paramLower === 'o3') {
+            // O3 puede venir como "o3" u "ozone"
+            matches = sensorParamName === 'o3' || sensorParamName === 'ozone';
           }
 
           if (matches) {
