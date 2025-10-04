@@ -14,12 +14,10 @@ import { OpenAqModule } from './open-aq/open-aq.module';
     }),
     OpenWeatherModule,
     WeatherApiModule,
-      isGlobal: true, // Hace que ConfigModule esté disponible globalmente
-      envFilePath: '.env', // Ruta al archivo .env
-    }),
     OpenAqModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
+
