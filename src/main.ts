@@ -7,6 +7,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   
   // Habilitar validación global
+  // Habilitar validaciones globales
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
@@ -57,5 +58,6 @@ async function bootstrap() {
   
   console.log(`\n🚀 Servidor iniciado en: http://localhost:${port}`);
   console.log(`📚 Documentación Swagger: http://localhost:${port}/api\n`);
+  await app.listen(process.env.PORT ?? 4000);
 }
 bootstrap();
