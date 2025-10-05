@@ -34,3 +34,41 @@ model TempoMeasurement {
   @@index([pollutant, aqi_category]) // Filtrado por categoría de calidad
   @@map("tempo_measurements")
 }
+
+// Modelo para datos de OpenAQ (sensores terrestres de PM - Particulate Matter)
+model OpenAQMeasurement {
+  id                BigInt   @id @default(autoincrement())
+  
+  // Información del sensor
+  sensorId          Int
+  locationId        Int
+  locationName      String   @db.VarChar(255)
+  country           String?  @db.VarChar(100)
+  
+  // Coordenadas (Norte América)
+  latitude          Float
+  longitude         Float
+  
+  // Medición de PM
+  parameter         String   @db.VarChar(10)  // "pm10" o "pm25"
+  value             Float                      // Valor en µg/m³
+  units             String   @db.VarChar(20)   // "µg/m³"
+  
+  // Fecha/Hora de la medición (UTC)
+  measurementDate   DateTime
+  
+  // Índice de Calidad del Aire calculado
+  aqi               Int?                       // AQI (0-500)
+  aqiCategory       String?  @db.VarChar(50)   // "Good", "Moderate", "Unhealthy", etc.
+  healthAdvice      String?  @db.Text          // Recomendación de salud
+  
+  // Metadatos
+  createdAt         DateTime @default(now())
+  
+  // Índices para búsquedas eficientes
+  @@index([measurementDate])                    // Filtrar por fecha
+  @@index([latitude, longitude])                // Búsquedas geográficas
+  @@index([parameter, aqiCategory])             // Filtrar por tipo y categoría
+  @@index([country, measurementDate])           // Datos por país y fecha
+  @@map("openaq_measurements")
+}

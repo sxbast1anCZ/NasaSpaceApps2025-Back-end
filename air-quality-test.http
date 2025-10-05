@@ -1,0 +1,59 @@
+### Endpoints de Calidad de Aire
+
+### 1. Obtener zonas peligrosas (últimas 6 horas)
+GET http://localhost:4000/air-quality/dangerous-zones
+Accept: application/json
+
+###
+
+### 2. Obtener zonas peligrosas (últimas 24 horas)
+GET http://localhost:4000/air-quality/dangerous-zones?hours=24
+Accept: application/json
+
+###
+
+### 3. Datos para mapa de calor (últimas 12 horas)
+GET http://localhost:4000/air-quality/map-data
+Accept: application/json
+
+###
+
+### 4. Datos para mapa de calor (últimas 6 horas)
+GET http://localhost:4000/air-quality/map-data?hours=6
+Accept: application/json
+
+###
+
+### 5. Recomendación de salud - Ciudad de México
+GET http://localhost:4000/air-quality/health-advice?lat=19.4326&lon=-99.1332&radius=50
+Accept: application/json
+
+###
+
+### 6. Recomendación de salud - Los Angeles
+GET http://localhost:4000/air-quality/health-advice?lat=34.0522&lon=-118.2437&radius=30
+Accept: application/json
+
+###
+
+### 7. Recomendación de salud - New York
+GET http://localhost:4000/air-quality/health-advice?lat=40.7128&lon=-74.0060&radius=25
+Accept: application/json
+
+###
+
+### 8. Recomendación de salud - Toronto
+GET http://localhost:4000/air-quality/health-advice?lat=43.6532&lon=-79.3832&radius=40
+Accept: application/json
+
+###
+
+### 9. Recomendación de salud - Monterrey
+GET http://localhost:4000/air-quality/health-advice?lat=25.6866&lon=-100.3161&radius=35
+Accept: application/json
+
+###
+
+### 10. Recomendación de salud - Vancouver
+GET http://localhost:4000/air-quality/health-advice?lat=49.2827&lon=-123.1207&radius=45
+Accept: application/json
