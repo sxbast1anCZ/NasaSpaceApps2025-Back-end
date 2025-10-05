@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { OpenWeatherModule } from './openweather/openweather.module';
 import { WeatherApiModule } from './weather-api/weather-api.module';
 import { OpenAqModule } from './open-aq/open-aq.module';
+import { TempoModule } from './tempo/tempo.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { OpenAqModule } from './open-aq/open-aq.module';
     OpenWeatherModule,
     WeatherApiModule,
     OpenAqModule,
+    TempoModule,
   ],
   controllers: [AppController],
   providers: [AppService],

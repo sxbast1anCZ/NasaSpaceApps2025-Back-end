@@ -1,0 +1,52 @@
+### Ingesta de datos TEMPO
+POST http://localhost:4000/tempo/ingest
+Content-Type: application/json
+
+{
+  "measurements": [
+    {
+      "latitude": 17.299999,
+      "longitude": -93.110001,
+      "timestamp": "2025-10-04T21:31:03Z",
+      "pollutant": "O3",
+      "tropospheric_concentration_ppb": 10.46,
+      "vertical_column_du": 261.4039,
+      "aqi": 10,
+      "aqi_category": "Bueno",
+      "quality_flag": 1.0
+    },
+    {
+      "latitude": 17.5,
+      "longitude": -93.2,
+      "timestamp": "2025-10-04T21:31:03Z",
+      "pollutant": "NO2",
+      "tropospheric_concentration_ppb": 5.23,
+      "vertical_column_du": 150.5,
+      "aqi": 15,
+      "aqi_category": "Bueno",
+      "quality_flag": 1.0
+    }
+  ]
+}
+
+###
+
+### Obtener mediciones de O3
+GET http://localhost:4000/tempo/measurements?pollutant=O3&limit=10
+
+###
+
+### Obtener mediciones por rango de fechas
+GET http://localhost:4000/tempo/measurements?startDate=2025-10-04T00:00:00Z&endDate=2025-10-04T23:59:59Z&limit=100
+
+###
+
+### Obtener mediciones por ubicación
+GET http://localhost:4000/tempo/measurements/location?latitude=17.3&longitude=-93.11&radius=0.5&pollutant=O3
+
+###
+
+### Obtener mediciones recientes de NO2
+GET http://localhost:4000/tempo/measurements?pollutant=NO2&limit=50
+
+###
